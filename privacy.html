@@ -630,6 +630,27 @@ window.addEventListener("scroll", () => {
 }
 
 </style>
+<script>
+  const form = document.getElementById("newsletterForm");
+  const message = form.querySelector(".subscribe-message");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault(); // stop page refresh
+
+    // Show confirmation
+    message.hidden = false;
+
+    // Optional: clear inputs
+    form.reset();
+    message.hidden = false;
+
+
+setTimeout(() => {
+  message.hidden = true;
+}, 3000);
+
+  });
+</script>
 </body>
 </body>
 <style>
@@ -674,4 +695,5 @@ window.addEventListener("scroll", () => {
           
 
       </header>
+
 
