@@ -475,6 +475,181 @@ window.addEventListener("scroll", () => {
 <p>No collected information will be used for marketing purposes or monetary benefit. If you have any concerns regarding privacy, user interface, or accessibility, please contact us through the feedback form or at centrespprts@gmail.com.</p><br>
 <p>Thank you for including Centre Supports in your exploratory journey!</p>
     </section>
+  <section class="pre-footer">
+  <div class="pre-footer-container">
+
+    <!-- About Us -->
+    <div class="pre-footer-col">
+      <h3>About Us</h3>
+      <p>
+       Here at Centre Supports, we choose to put the community first. We're glad to be a part of your journey in navigating Centre County. Thank you for choosing Centre Supports.
+      </p>
+    </div>
+
+    <!-- Links -->
+    <div class="pre-footer-col">
+      <h3>Links</h3>
+      <ul class="footer-links">
+        <li><a href="mission.html">Mission</a></li>
+        <li><a href="documentation.html">Documentation</a></li>
+        <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=centresupports@gmail.com" target="_blank">Contact Us</a></li>
+        <li><a href="feedback.html">Feedback</a></li>
+        <li><a href="newsletter.html">Past Newsletters</a></li>
+      </ul>
+    </div>
+
+    <!-- Image -->
+    <div class="pre-footer-col image-col">
+           <img src="centresupportslogo.png" alt = "Centre Supports logo"/>
+
+    </div>
+
+    <!-- Newsletter -->
+    <div class="pre-footer-col">
+      <h3>Newsletter</h3>
+      <p>Subscribe so you don't miss future community updates from Centre Supports!</p>
+      <form class="newsletter-form" id="newsletterForm">
+        <input type="text" placeholder="Enter your name (e.g. Jane Doe)" />
+        <input type="email" placeholder="Enter your email (e.g. email@example.com)" />
+        <button type="submit">Subscribe</button>
+          <p class="subscribe-message" hidden>
+    Thank you for subscribing!
+          </p>
+      </form>
+    </div>
+
+
+</section>
+<style>
+  .pre-footer {
+  background-color: #719380;
+  color: #ffffff;
+  padding: 60px 40px;
+}
+
+.pre-footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+
+.pre-footer h3 {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.pre-footer p {
+  line-height: 1.6;
+  color: #FFFFFF;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 12px;
+}
+
+.footer-links a {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px 5px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.footer-links a:hover {
+  background-color: rgba(255, 255, 255, 0.2)
+}
+
+/* Image */
+.image-col img {
+  height: 220px;
+  width: 300px;
+}
+
+/* Newsletter */
+.newsletter-form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  background-color: #ffffff;
+  border: 2px solid #577263;
+  color: #00000;
+  font-family: 'Onest', sans-serif;
+}
+
+.newsletter-form input::placeholder {
+  color: #aaaaaa;
+}
+.newsletter-form input:focus {
+  outline: none;
+  border-color: black;
+}
+
+.newsletter-form button {
+  padding: 12px;
+  width: 100%;
+  background-color: transparent;
+  border: 2px solid #577263;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.newsletter-form button:hover {
+  background-color: #577263;
+  color: #ffffff;
+}
+
+.subscribe-message {
+  margin-top: 15px;
+  color: #4caf50;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .pre-footer-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .pre-footer-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+</style>
+
+<script>
+  const form = document.getElementById("newsletterForm");
+  const message = form.querySelector(".subscribe-message");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault(); // stop page refresh
+
+    // Show confirmation
+    message.hidden = false;
+
+    // Optional: clear inputs
+    form.reset();
+    message.hidden = false;
+
+
+setTimeout(() => {
+  message.hidden = true;
+}, 3000);
+
+  });
+</script>
 </body>
 </body>
 <style>
@@ -517,4 +692,5 @@ window.addEventListener("scroll", () => {
     </footer>
   </nav>
           
+
       </header>
