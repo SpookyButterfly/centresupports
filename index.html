@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Community Hub</title>
+  <link rel="icon" href="centresupportslogo.png" type "image/png"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="Mission, Community Resources, Kids Hub, Hotlines">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="stylesheet" href="styles.css">
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Onest:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
+
+  <!-- Fuse.js (REQUIRED) -->
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+</head>
+
+  <!-- Styles -->
+  <style>
+  /* Basic navbar styling */
+
+.body{
+  margin: 0;
+
+}
+
+body {
+  padding-top: 240px; /* adjust to navbar height */
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+
+/* Hidden state */
+header.nav-hidden {
+  transform: translateY(-100%);
+}
+
+.navbar{
+  display: flex;
+  align-items: center;
+}
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+nav ul li {
+  display: inline-block;
+  position: relative; /* Needed for dropdown positioning */
+  margin-right: 20px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+}
+
+/* Hide dropdown by default */
+nav ul li select {
+  display: none;
+  position: absolute;
+  top: 50%; /* Places below the link */
+  left: 0;
+  margin-top: 5px;
+}
+
+/* Show dropdown when hovering over the list item */
+nav ul li:hover select {
+  display: block;
+}
+    body { transition: opacity 0.5s ease; font-family: 'Onest', sans-serif; }
+    body.fade-out { 
+      opacity: 0; }
+
+
+    .search-wrapper { 
+      display:flex; 
+      align-items: center;
+      max-width: 280px;
+      }
+    .search-icon {
+  flex-shrink: 0;   /* critical */
+  margin-right: 10px;
+}
+    #searchForm {
+      display: flex;
+      width: 0;
+      overflow: hidden;
+      transition: width 0.3s ease;
+      min-width: 0;
+    }
+  
+.material-symbols-outlined {
+  pointer-events: none;
+}
+  .search-wrapper:focus-within #searchForm {
+  width: 240px;
+}
+
+    #searchInput {
+      width: 160px;
+      padding: 6px;
+      border: 1px solid #ccc;
+      border-radius: 4px 0 0 4px;
+      font-family: 'Onest', sans-serif;
+    }
+
+    #searchForm input[type="submit"] {
+      padding: 6px 12px;
+      background: #70917b;
+      color: white;
+      border: none;
+      width: 80px;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      font-family: 'Onest', sans-serif;
+    }
+    #searchForm input[type="submit"]:hover {
+      background-color: #597060;
+    }
+    
+    #loading-screen {
+      position: fixed;
+      inset: 0;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 9999;
+    }
+
+    #loading-screen.active { opacity: 1; }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid #ccc;
+      border-top-color: black;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } 
+    
+    /* ===== MOBILE NAVBAR ===== */
+@media (max-width: 900px) {
+  .navbar {
+    flex-wrap: wrap;
+    padding: 10px;
+  }
+
+  .logo {
+    flex: 1 1 100%;
+    margin-bottom: 10px;
+  }
+
+  /* Stack dropdown buttons */
+  .dropdown {
+    width: 100%;
+  }
+
+  .dropbtn {
+    width: 100%;
+    text-align: left;
+    padding: 12px;
+  }
+
+  .dropdown-content {
+    position: static;
+    width: 100%;
+    box-shadow: none;
+  }
+
+  /* Disable hover-only behavior on mobile */
+  .dropdown:hover .dropdown-content {
+    display: none;
+  }
+
+  /* Enable click behavior */
+  .dropdown-content.show {
+    display: block;
+  }
+
+  /* Search bar full-width */
+  .search-wrapper {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 10px;
+  }
+
+  .search-wrapper:hover #searchForm {
+    width: 100%;
+  }
+
+  #searchForm {
+    width: 100%;
+  }
+
+  #searchInput {
+    width: 100%;
+  }
+    }
+button,
+a {
+  min-height: 44px;
+}
+
+.dropbtn {
+  font-size: 1rem;
+}
+
+
+  </style>
+
+<body>
+
+<!-- Loading Screen -->
+<div id="loading-screen">
+  <div class="spinner"></div>
+</div>
+
+<!-- Navbar -->
+
+    <header>
+  
+   
+           
+<nav class="navbar">
+  <div class="logo"><a href="index.html"> <img src="centresupportslogo.png" alt = "Centre Supports logo"/></a></div>
+  <div class="logo">
+      <a href="index.html">Centre Supports</a>
+  </div>
+ 
+   <div class="dropdown">
+                <button class="dropbtn">Mission</button>
+                <div class="dropdown-content">
+                  <a href="mission.html"onclick="transitionToPage(event)">Mission</a>
+                  <a href="newsletter.html"onclick="transitionToPage(event)">Past Newsletters</a>
+                  <a href="feedback.html"onclick="transitionToPage(event)">Feedback</a>
+                </div>
+              </div>
+
+  <button class="menu-toggle" aria-expanded="false" data-menu="communityMenu">
+    Community Resources ▾
+  </button>
+
+<div class="mega-menu" id="communityMenu">
+  <div class="mega-column">
+    <h4>Essentials</h4>
+    <a href="food.html">Food Services</a>
+    <a href="clothing.html">Clothing Services</a>
+    <a href="housing.html">Housing Services</a>
+  </div>
+
+  <div class="mega-column">
+    <h4>Resources</h4>
+    <a href="age.html">Aging Services</a>
+    <a href="employment.html">Employment and Finance Services</a>
+    <a href="transportation.html">Transportation Services</a>
+    <a href="substance.html">Substance Abuse Services</a>
+  </div>
+</div>
+    <div class="dropdown">
+                    <button class="dropbtn">Youth Hub</button>
+                    <div class="dropdown-content">
+                      <a href="kids.html"onclick="transitionToPage(event)">Youth Services</a>
+                      <a href="volunteer.html" onclick="transitionToPage(event)">Volunteering Opportunities</a>
+                    </div>
+                  </div>
+
+                </li>
+  <button class="menu-toggle" aria-expanded="false" data-menu="missionMenu">
+    Hotlines & Health ▾
+  </button>
+  <div class="mega-menu" id="missionMenu">
+  <div class="mega-column">
+    <h4>Hotlines</h4>
+    <a href="prevent.html">Suicide Prevention Hotline</a>
+    <a href="crisis.html">Centre County Crisis Line</a>
+    <a href="sui.html">Local Suicide and Crisis Lifeline</a>
+  </div>
+
+  <div class="mega-column">
+    <h4>Health</h4>
+    <a href="centre.html">Centre Helps</a>
+    <a href="mentalhealthservices.html">Mental Health Services</a>
+    <a href="abuse.html">Physical Health/Abuse Resources</a>
+  </div>
+</div>
+</div>
+
+ <div class="documentation">
+   <a href="documentation.html" onclick="transitionToPage(event)">Documentation</a>
+        </div>
+  <div class="search-wrapper" tabindex="0">
+    <span class="material-symbols-outlined">search</span>
+    <form id="searchForm" action="javascript:void(0);">
+      <input id="searchInput" placeholder="Search...">
+      <input type="submit" value="Go!">
+    </form>
+  </div>
+</nav>
+<style>
+  .navbar {
+  background: #85af93;
+  padding: 15px 40px;
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  font-family: 'Onest', sans-serif;
+}
+
+/* Mega menu container */
+.mega-menu {
+  display: flex;
+  gap: 40px;
+  padding: 0 40px;
+  background: #f9f9f9;
+
+  /* collapsed state */
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+}
+
+/* Open state */
+.mega-menu.open {
+  max-height: 400px; /* large enough for content */
+  padding: 30px 40px;
+}
+
+.mega-column h4 {
+  color: black;
+  margin-bottom: 10px;
+}
+
+.mega-column a {
+  display: block;
+  color: #333;
+  margin-bottom: 8px;
+  text-decoration: none;
+}
+</style>
+<script>
+ const toggles = document.querySelectorAll(".menu-toggle");
+
+ toggles.forEach(toggle => {
+   toggle.addEventListener("click", () => {
+     const menuId = toggle.dataset.menu;
+     const menu = document.getElementById(menuId);
+     const isOpen = menu.classList.contains("open");
+
+     // close all menus
+     document.querySelectorAll(".mega-menu").forEach(m => m.classList.remove("open"));
+     toggles.forEach(t => t.setAttribute("aria-expanded", "false"));
+
+     // open clicked one
+     if (!isOpen) {
+       menu.classList.add("open");
+       toggle.setAttribute("aria-expanded", "true");
+     }
+   });
+ });
+</script>
+<!-- Search Script -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("searchForm");
+  const input = document.getElementById("searchInput");
+  const loading = document.getElementById("loading-screen");
+
+  const pages = [
+    { title: "Aging Services", keywords: ["aging","age","senior","seniors","elderly","retirement","retiree","older","nurse","old","ACAP","Eagle Valley","The Village","RSVP","retired"], url: "age.html" },
+      { title: "Youth Services", keywords: ["child","children","youth","kids","young","adolescent","juvenile","teen","childcare","baby","babies","daycare","grand","childspace", "ymca", "bureau", "united way", "key"], url: "kids.html" },
+      { title: "Food Services", keywords: ["food","meal","meals","nutrition","groceries","pantry","kitchen","hunger","hungry","stomach","restaurant","food bank","faith","action","CPCA","commonFood","lion","pantry"], url: "food.html" },
+      { title: "Substance Abuse Services", keywords: ["drugs","drug","substance","help","narcotics","remission","recovery","joseph","applegate","crossroads","INC", "pinnacle"], url: "substance.html" },
+      { title: "Transportation Services", keywords: ["transport","transportation","bus","buses","transit","ride","travel","commute","cata","greyhound","megabus","active","MPO"], url: "transportation.html" },
+      { title: "Suicide Prevention Hotline", keywords: ["suicide","intervention","prevention","helpline","support"], url: "prevent.html" },
+      { title: "Clothing Services", keywords: ["clothing","clothes","attire","shirt","pants","shoes","Vincent","Mommy","goodwill","salvation army", "centre peace"], url: "clothing.html" },
+      { title: "Employment and Finance Services", keywords: ["employment","job","jobs","career","work","finance","money","income","CROG","CRCOG","careerlink","interfaith","liHeap"], url: "employment.html" },
+      { title: "Centre County Suicide Prohibition Hotline", keywords: ["prohibition","hotline"], url: "sui.html" },
+      { title: "Physical Health/Abuse", keywords: ["physical","health","healthcare","abuse","fitness","hospital","medical","medicine","wellness","doctor", "medics", "dental", "teeth", "back", "pain", "hurt", "heart","CVIM","volunteers","nittany","centre safe"], url: "abuse.html" },
+      { title: "Housing Services", keywords: ["housing","house","home","apartment","rent","rental","lease","shelter"], url: "housing.html" },
+      { title: "Centre County Crisis Line", keywords: ["crisis","line"], url: "crisis.html" },
+      { title: "Mental Health Services", keywords: ["mental","mind","psychological","therapy","treatment","wellness","awareness", "sad", "depression", "anxiety","help","alone","jana marie","community","mental illness","NAMI"], url: "mentalhealthservices.html" },
+      { title: "Centre Helps", keywords: ["helps","centre","center"], url: "helps.html" }
+  ];
+
+  const fuse = new Fuse(pages, {
+    keys: ["title", "keywords"],
+    threshold: 0.5
+  });
+
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+
+    const query = input.value.trim().toLowerCase();
+    if (!query) return;
+
+    loading.classList.add("active");
+    document.body.classList.add("fade-out");
+
+    setTimeout(() => {
+      const results = fuse.search(query);
+      if (results.length > 0) {
+        window.location.href = results[0].item.url;
+      } else {
+        alert("No results found.");
+        loading.classList.remove("active");
+        document.body.classList.remove("fade-out");
+      }
+    }, 700);
+  });
+});
+</script>
+<script>
+  
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".dropbtn").forEach(btn => {
+  btn.addEventListener("click", e => {
+    e.preventDefault();
+    const menu = btn.nextElementSibling;
+    document.querySelectorAll(".dropdown-content").forEach(d => {
+      if (d !== menu) d.classList.remove("show");
+    });
+    menu.classList.toggle("show");
+  });
+});
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const links = document.querySelectorAll("nav a");
+
+    links.forEach(link => {
+      link.addEventListener("click", event => {
+        const href = link.getAttribute("href");
+
+        // Allow external links or anchors to behave normally
+        if (!href || href.startsWith("#") || link.target === "_blank") return;
+
+        event.preventDefault();
+        document.body.classList.add("fade-out");
+
+        setTimeout(() => {
+          window.location.href = href;
+        }, 400); // match CSS transition duration
+      });
+    });
+  });
+</script>
+
+</script>
+</header>
+      
+  <!--Copy and paste until here-->
+       <section id="home" class="container">
+        <h1>Welcome to Centre Supports Community Hub!</h1>
+          <img src="https://secure.acce.org/clientuploads/directory/super_blog/blog/2024/hubs.png">
+      
+        <p>CS offers a helping hand to individuals with varying needs.</p> 
+        <p>We also offer mental health resources, as well as a business spotlight to showcase the resources around our community. </p>
+        <p>Centre County is here to help. Find your place at Centre Supports. </p>
+    </section>
+    
+    <section class="counter-section">
+  <div class="counter-container">
+      <h1 class="counter-heading">Why Choose Us?</h1>
+
+    <div class="counter-box">
+      <i class="fa-solid fa-users counter-icon"></i>
+      <span class="counter" data-target="250">0</span>
+      <p>Buisinesses Supported</p>
+    </div>
+
+    <div class="counter-box">
+      <i class="fa-solid fa-dollar-sign counter-icon"></i>
+      <span class="counter" data-target="5000">0</span>
+      <p>Dollars Funded</p>
+    </div>
+
+    <div class="counter-box">
+      <i class="fa-solid fa-heart counter-icon"></i>
+      <span class="counter" data-target="70">0</span>
+      <p>Outreach Connections </p>
+    </div>
+
+  </div>
+</section>
+<section class="article-section">
+  <div class="article-container">
+    <h1 class="article-heading">Centre Supports Times Feature</h1>
+    <img src="pencil-with-doodle-line_78370-757.png"/>
+    <p class="article-meta">By Centre Supports Staff • January 2026 &nbsp;&nbsp;&nbsp;</p>
+
+    <article class="article-content">
+          <p>
+          
+            Since its recent establishment, Centre Supports, a local community resource hub, has started a forward effort to build a website consolidating local businesses and nonprofits in Centre County PA, aiming to support the community. Starting 2026, the organization has implemented various new initiatives to improve user experience and expand outreach.
+
+          </p>
+          <p>
+            Through their many partners, the Centre Supports website provides insight on the missions and goals of various major businesses in the county. Through their business spotlights section, directors and staff alike can share their thoughts. “‘We support victims and survivors of sexual assault, dating, and domestic violence… we really are a safety net for people of all ages, identities, [and] backgrounds who are going through these things,” says Director of Centre Safe, Jennifer Pancek. 
+          </p>
+          <div class="article-picture">
+          <img src="editedimage.png.png"/>
+          </div>
+          <p>
+            Regarding community support, Kelly Carpenter from Childspace has been working to improve the establishment for 2026. Childspace gives every kid a  “...child-centered environment to be in…a lot of families don’t have the kinds of equipment and materials that we have here in a space where kids can be with peers and learn from peers more than they can when they’re at home.” 
+          </p>
+          <p>
+            Action is being taken on a county-wide level as well; the Centre County Office of Aging has increased their number of programs: “Our goal is to keep elderly people at home as long as possible ...our services are based on supporting an individual of 60 years age or older; in most cases they surround trying to allow the older adult to maintain their living situation for as long as possible,” says Quentin Burchfield, Office of Aging director. Centre Supports aims to highlight these initiatives through their Youtube channel.
+
+          </p>
+          <p>
+          The site offers a user-friendly, efficient platform for community members, providing a wide range of resources and various accessibility features to improve user experience.
+
+           <ul class="article-list">
+            <li>Hotlines for immediate help in emergencies</li>
+            <li>Reliable childcare services to support the local youth</li>
+            <li>Substance abuse and mental health resources</li>
+            <li>Knowledge on job opportunities and finances</li>
+            <li>Resources to improve access to housing and transportation</li>
+          </ul>
+          </p>
+          <p>
+            Each category offers different services that are tailored to help those struggling with various issues. It gives any Centre County individual access to local resources, shedding light on both small nonprofits and county-wide organizations. Centre Supports managers aim to create a cohesive, effective environment for the exploration of resources in Centre County. Additionally, the site includes a feedback page, allowing residents to request the inclusion of additional sites. 
+          </p>
+          <p>
+            As for improvements around the county, interviewees have described great progress. Director Pancek describes, “We just launched our annual $50,000 holiday campaign to raise $50,000 to use for…our services and clients during the year” (Centre Safe). “I recently got a grant for $2,000.00 worth of outdoor equipment…we’re gonna be getting some new, more expensive equipment that I can’t usually afford on my regular budget… I just recently started offering drop-in services as well, so people who don’t need a consistent spot but might need something like a babysitter once in a while…have a place to bring their child that is convenient,” adds Ms. Carpenter. Learn more about progress and changes in Centre County in our seasonal newsletter!
+
+          </p>
+          <p>
+            As the local community continues to grow, Centre Supports looks to help anyone in need. They have high hopes for new partnerships, support connections, and fundraising opportunities in 2026. 
+          </p>
+         
+        <div class="article-end">
+           <p>
+            Stay tuned in with CS Times for more updates!
+          </p>
+        </div>
+    </article>
+  
+  </div>
+</section>
+<style>
+.article-picture img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.article-list {
+  list-style-position: inside; /* bullets closer to text */
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.article-list li {
+  margin-bottom: 10px;
+}
+.article-container img{
+  height: 110px;
+}
+.article-end p{
+  text-align: center;
+}
+  .article-section{
+     padding: 80px 40px;
+  text-align: center;
+  background-color: white;
+  padding-bottom: 100px;
+  margin: 80px 0;
+  }
+  .article-content img{
+    height: 500px;
+  }
+  .article-content{
+    text-align: left;
+  }
+</style>
+<style>
+    .counter-section {
+  padding: 80px 40px;
+  text-align: center;
+  background-color: white;
+  padding-bottom: 100px;
+  margin: 80px 0;
+   background-image: url('https://st3.depositphotos.com/25064022/35452/i/450/depositphotos_354524264-stock-photo-wave-wave-particles-abstract-white.jpg'); /* replace with your image path */
+  background-size: cover;       /* makes the image cover the entire section */
+  background-position: center;  /* centers the image */
+  background-repeat: no-repeat; /* prevents tiling */
+  
+  padding-bottom: 100px;
+  margin: 80px 0;
+  
+  background-color: rgba(255, 255, 255, 0.6); /* white overlay */
+  background-blend-mode: lighten; 
+}
+
+.counter-box img{
+  height: 200px;
+  width: 200px;
+}
+
+.counter-heading {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2.5rem;
+  text-align: center;  /* centers heading text */
+  width: 100%; /* space between heading and icons */
+}
+
+.counter-container {
+   display: flex;
+  justify-content: center; /* centers the icons as a group */
+  gap: 20px; /* smaller gap between icons */
+  flex-wrap: wrap;
+}
+.counter-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+  text-align: center;
+}
+
+.counter-icon {
+  font-size: 3rem;
+  color: #577263; /* change color */
+  margin-bottom: 0.5rem;
+}
+
+
+
+.counter-box span {
+  font-size: 48px;
+  font-weight: 700;
+  color: #577263;
+}
+
+.counter-box p {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #333;
+}
+
+@media (max-width: 800px) {
+  .counter-container {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .counter-box {
+    width: 100%;
+  }
+}
+</style>
+
+<script>
+  const counters = document.querySelectorAll(".counter");
+  const duration = 2000; // total animation time in ms
+
+  const startCounting = () => {
+    const startTime = performance.now();
+
+    const update = (currentTime) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+
+      counters.forEach(counter => {
+        const target = +counter.dataset.target;
+        counter.innerText = Math.floor(target * progress);
+      });
+
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      } else {
+        // Ensure exact final values
+        counters.forEach(counter => {
+          counter.innerText = counter.dataset.target;
+        });
+      }
+    };
+
+    requestAnimationFrame(update);
+  };
+
+  // Intersection Observer (trigger once)
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      if (entries.some(entry => entry.isIntersecting)) {
+        startCounting();
+        counters.forEach(counter => obs.unobserve(counter));
+      }
+    },
+    { threshold: 0.6 }
+  );
+
+  counters.forEach(counter => observer.observe(counter));
+</script>
+
+<style>
+  .container img{
+    height: 450px;
+    width: 670px;
+  }
+</style>
+
+<style>
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+#progress-wrapper {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 800px;
+  height: 60px;
+  background: #e0e0e0;
+  border-radius: 30px;
+  cursor: grab;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+/* Progress fill */
+#progress-bar {
+  position: absolute;
+  height: 100%;
+  width: 0%;
+  background: #4caf50;
+  transition: width 0.2s ease;
+}
+
+/* Icons row */
+.progress-icons {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  z-index: 2;
+}
+
+.progress-icons a {
+  color: #333;
+  text-decoration: none;
+}
+
+.material-symbols-outlined {
+  font-size: 28px;
+}
+
+/* Optional hover effect */
+.progress-icons a:hover .material-symbols-outlined {
+  color: #000;
+}
+@media (max-width: 768px) {
+  .partners-track {
+    gap: 20px;
+  }
+
+  .partners-track a img {
+    height: 60px;
+  }
+
+  .carousel-btn {
+    display: none; /* swipe only on mobile */
+  }
+}
+@media (max-width: 768px) {
+  .footer {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 20px;
+  }
+
+  .footer-left,
+  .footer-right {
+    grid-column: 1;
+    text-align: center;
+  }
+
+  .footer-right a {
+    margin: 0 8px;
+  }
+}
+
+</style>
+<!---Below this green comment tab is where you guys should copy and paste the footer section. For each page, go to the very bottom of the page and copy and paste this.-->
+<!---Copy and paste this info from high.html to the end. DO NOT copy it into script.js or styles.css--->
+<!---Copy the info at the very bottom of the page, past all of the code.--->
+
+<section class="partners-scroll-section">
+  <h2>Business Highlights:</h2>
+  <div class="partners-scroll">
+    <button class="carousel-btn left">&#10094;</button>
+
+    <div class="partners-track">
+      <a href="https://centrecountypa.gov/342/Aging" target="_blank" rel="noopener noreferrer">
+        <img src="OfficeofAging.png" alt="Office of Aging">
+      </a>
+      <a href="https://childspacedaycarecenters.org/" target="_blank" rel="noopener noreferrer">
+        <img src="Childspace.png" alt="Childspace">
+      </a>
+      <a href="https://scfoodbank.org/" target="_blank" rel="noopener noreferrer">
+        <img src="SCFoodBank.png" alt="SC Food Bank">
+      </a>
+      <a href="https://www.outofthecoldcc.org/" target="_blank" rel="noopener noreferrer">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0ui1VKFd58B6tBnsvQj_5uG-AgM1xtBVWhw&s" alt="Out of the Cold">
+      </a>
+      <a href="https://www.goodwill.org/" target="_blank" rel="noopener noreferrer">
+        <img src="Goodwill.png" alt="Goodwill">
+      </a>
+      <a href="https://www.crcog.net/employment" target="_blank" rel="noopener noreferrer">
+        <img src="CROG.png" alt="Partner 2">
+      </a>
+      <a href="https://catabus.com/" target="_blank" rel="noopener noreferrer">
+        <img src="CATA.png" alt="CATA Bus services">
+      </a>
+      <a href="https://988lifeline.org/" target="_blank" rel="noopener noreferrer">
+        <img src="988hotline.png" alt="988 hotline services">
+      </a>
+      <a href="https://applegaterecovery.com/locations/pennsylvania/state-college/" target="_blank" rel="noopener noreferrer">
+        <img src="AppleGate.png" alt="Applegate Corporations">
+      </a>
+      <a href="https://www.centrehelps.org/" target="_blank" rel="noopener noreferrer">
+        <img src="centrehelps.png" alt="Centre Helps">
+      </a>
+      <a href="https://janamariefoundation.org/meet-us/" target="_blank" rel="noopener noreferrer">
+        <img src="janamarie.png" alt="Jana Marie Foundation">
+      </a>
+      <a href="https://discoveryspace.org/support/volunteer/" target="_blank" rel="noopener noreferrer">
+        <img src="DISCOVERY.png" alt="Discovery Space">
+      </a>
+      <a href="https://centrecountypa.gov/593/CrisisEmergency-Services#:~:text=The%20crisis%20line%20is%201,their%20safe%20and%20confidential%20location." target="_blank" rel="noopener noreferrer">
+        <img src="CCcrisisline.png" alt="988 hotline services">
+      </a>
+      <a href="https://www.cvim.net/" target="_blank" rel="noopener noreferrer">
+        <img src="CVIM.png" alt="Centre Volunteers in Medicine">
+      </a>
+      
+    </div>
+
+    <button class="carousel-btn right">&#10095;</button>
+  </div>
+</section>
+
+<style>
+/* Section styling */
+
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const track = document.querySelector(".partners-track");
+  const container = document.querySelector(".partners-scroll");
+  const leftBtn = document.querySelector(".carousel-btn.left");
+  const rightBtn = document.querySelector(".carousel-btn.right");
+
+  let offset = 0;
+  const step = 200; // Adjust scroll step
+
+  rightBtn.addEventListener("click", () => {
+    const maxOffset = track.scrollWidth - container.offsetWidth;
+    offset = Math.max(offset - step, -maxOffset);
+    track.style.transform = `translateX(${offset}px)`;
+  });
+
+  leftBtn.addEventListener("click", () => {
+    offset = Math.min(offset + step, 0);
+    track.style.transform = `translateX(${offset}px)`;
+  });
+});
+</script>
+
+<style>
+  .footer{
+  justify-content: flex-start; /* move everything to the left */
+  align-items: center;
+  padding-left: 20px; /* optional spacing from left edge */
+  gap: 30px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  align-items: start;
+  }
+  .footer a i{
+    color: white;
+  }
+  .footer-left{
+    grid-column: 1 / -1;
+  }
+  .footer-left a{
+    color: white;
+    text-decoration: none;
+  }
+  .footer-left a:hover{
+   background-color: rgba(255, 255, 255, 0.2);
+   padding: 10px 5px;
+   border-radius: 8px;
+   transition: background-color 0.3s ease;
+  }
+  .footer-right{
+      grid-column: 2;
+  grid-row: 2;
+  margin-top: 8px;
+  }
+</style>
+
+
+
+
+
+    <!-- BOTTOM LINKS -->
+  
+<section class="pre-footer">
+  <div class="pre-footer-container">
+
+    <!-- About Us -->
+    <div class="pre-footer-col">
+      <h3>About Us</h3>
+      <p>
+       Here at Centre Supports, we choose to put the community first. We're glad to be a part of your journey in navigating Centre County. Thank you for choosing Centre Supports.
+      </p>
+    </div>
+
+    <!-- Links -->
+    <div class="pre-footer-col">
+      <h3>Links</h3>
+      <ul class="footer-links">
+        <li><a href="mission.html">Mission</a></li>
+        <li><a href="documentation.html">Documentation</a></li>
+        <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=centresupports@gmail.com" target="_blank">Contact Us</a></li>
+        <li><a href="feedback.html">Feedback</a></li>
+        <li><a href="newsletter.html">Past Newsletters</a></li>
+      </ul>
+    </div>
+
+    <!-- Image -->
+    <div class="pre-footer-col image-col">
+      <img src="centresupportslogo.png" alt = "Centre Supports Logo">
+      </div>
+
+    <!-- Newsletter -->
+    <div class="pre-footer-col">
+      <h3>Newsletter</h3>
+      <p>Subscribe so you don't miss future community updates from Centre Supports!</p>
+      <form class="newsletter-form" id="newsletterForm">
+        <input type="text" placeholder="Enter your name (e.g. Jane Doe)" />
+        <input type="email" placeholder="Enter your email (e.g. email@example.com)" />
+        <button type="submit">Subscribe</button>
+          <p class="subscribe-message" hidden>
+    Thank you for subscribing!
+          </p>
+      </form>
+    </div>
+
+
+</section>
+<style>
+  .pre-footer {
+  background-color: #719380;
+  color: #ffffff;
+  padding: 60px 40px;
+}
+
+.pre-footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+
+.pre-footer h3 {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.pre-footer p {
+  line-height: 1.6;
+  color: #FFFFFF;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 12px;
+}
+
+.footer-links a {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px 5px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.footer-links a:hover {
+  background-color: rgba(255, 255, 255, 0.2)
+}
+
+/* Image */
+.image-col img {
+  height: 220px;
+  width: 300px;
+}
+
+/* Newsletter */
+.newsletter-form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  background-color: #ffffff;
+  border: 2px solid #577263;
+  color: #00000;
+  font-family: 'Onest', sans-serif;
+}
+
+.newsletter-form input::placeholder {
+  color: #aaaaaa;
+}
+.newsletter-form input:focus {
+  outline: none;
+  border-color: black;
+}
+
+.newsletter-form button {
+  padding: 12px;
+  width: 100%;
+  background-color: transparent;
+  border: 2px solid #577263;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.newsletter-form button:hover {
+  background-color: #577263;
+  color: #ffffff;
+}
+
+.subscribe-message {
+  margin-top: 15px;
+  color: #4caf50;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .pre-footer-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .pre-footer-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+</style>
+
+<script>
+  const form = document.getElementById("newsletterForm");
+  const message = form.querySelector(".subscribe-message");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault(); // stop page refresh
+
+    // Show confirmation
+    message.hidden = false;
+
+    // Optional: clear inputs
+    form.reset();
+    message.hidden = false;
+
+
+setTimeout(() => {
+  message.hidden = true;
+}, 3000);
+
+  });
+</script>
+
+
+  
+  
+  <footer class="footer">
+    <div class="footer-left">
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=centresupports@gmail.com" target="_blank">Contact Us</a>
+      &nbsp;&nbsp;&nbsp;
+      <a href="terms.html" target="_blank">Terms of Service</a>
+      &nbsp;&nbsp;&nbsp;
+      <a href="privacy.html" target="_blank">Privacy Policy</a>
+    <p>© 2025-26 <span class="brand-text">Centre Supports. All rights reserved.</span></p> 
+    </div>
+    <div class="footer-right">
+      <a href="https://www.facebook.com/people/Centre-Supports/61586017081439/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://x.com/CentreSupports" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="https://www.instagram.com/centresupports/" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/in/centre-supports-5114113a2/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://www.youtube.com/playlist?list=PLQtjomygFu7FzsSw1Zo_9mo25dHefECaw" target= "_blank"><i class="fab fa-youtube"></i></a>
+    </div>
+    
+    </footer>
+<script>
+const header = document.querySelector("header");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 80) {
+    // once user scrolls down → hide navbar
+    header.classList.add("nav-hidden");
+  } else {
+    // only show navbar when back at the top
+    header.classList.remove("nav-hidden");
+  }
+});
+</script>
+
+</body>
+</html>
