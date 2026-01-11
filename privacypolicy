@@ -475,7 +475,10 @@ window.addEventListener("scroll", () => {
 <p>No collected information will be used for marketing purposes or monetary benefit. If you have any concerns regarding privacy, user interface, or accessibility, please contact us through the feedback form or at centrespprts@gmail.com.</p><br>
 <p>Thank you for including Centre Supports in your exploratory journey!</p>
     </section>
-  <section class="pre-footer">
+  
+    <!-- BOTTOM LINKS -->
+  
+<section class="pre-footer">
   <div class="pre-footer-container">
 
     <!-- About Us -->
@@ -500,9 +503,8 @@ window.addEventListener("scroll", () => {
 
     <!-- Image -->
     <div class="pre-footer-col image-col">
-           <img src="centresupportslogo.png" alt = "Centre Supports logo"/>
-
-    </div>
+      <img src="centresupportslogo.png" alt = "Centre Supports Logo">
+      </div>
 
     <!-- Newsletter -->
     <div class="pre-footer-col">
@@ -628,28 +630,6 @@ window.addEventListener("scroll", () => {
 }
 
 </style>
-
-<script>
-  const form = document.getElementById("newsletterForm");
-  const message = form.querySelector(".subscribe-message");
-
-  form.addEventListener("submit", function (e) {
-    e.preventDefault(); // stop page refresh
-
-    // Show confirmation
-    message.hidden = false;
-
-    // Optional: clear inputs
-    form.reset();
-    message.hidden = false;
-
-
-setTimeout(() => {
-  message.hidden = true;
-}, 3000);
-
-  });
-</script>
 </body>
 </body>
 <style>
@@ -694,3 +674,4 @@ setTimeout(() => {
           
 
       </header>
+
