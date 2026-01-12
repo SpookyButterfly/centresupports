@@ -383,6 +383,52 @@ a {
    });
  });
 </script>
+      <script>
+  const toggles = document.querySelectorAll(".menu-toggle");
+  const menus = document.querySelectorAll(".mega-menu");
+
+  toggles.forEach(toggle => {
+    toggle.addEventListener("click", (e) => {
+      e.stopPropagation(); // prevent document click from firing
+
+      const menuId = toggle.dataset.menu;
+      const menu = document.getElementById(menuId);
+      const isOpen = menu.classList.contains("open");
+
+      // close all menus
+      menus.forEach(m => m.classList.remove("open"));
+      toggles.forEach(t => t.setAttribute("aria-expanded", "false"));
+
+      // open clicked one
+      if (!isOpen) {
+        menu.classList.add("open");
+        toggle.setAttribute("aria-expanded", "true");
+      }
+    });
+  });
+
+  // Prevent clicks inside menu from closing it
+  menus.forEach(menu => {
+    menu.addEventListener("click", (e) => {
+      e.stopPropagation();
+    });
+  });
+
+  // Close when clicking anywhere else
+  document.addEventListener("click", () => {
+    menus.forEach(m => m.classList.remove("open"));
+    toggles.forEach(t => t.setAttribute("aria-expanded", "false"));
+  });
+
+        document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    menus.forEach(m => m.classList.remove("open"));
+    toggles.forEach(t => t.setAttribute("aria-expanded", "false"));
+  }
+});
+
+</script>
+
 <!-- Search Script -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
@@ -1160,4 +1206,5 @@ window.addEventListener("scroll", () => {
 </body>
 
 </html>
+
 
