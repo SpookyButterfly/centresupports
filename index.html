@@ -363,33 +363,13 @@ a {
 }
 </style>
 <script>
- const toggles = document.querySelectorAll(".menu-toggle");
-
- toggles.forEach(toggle => {
-   toggle.addEventListener("click", () => {
-     const menuId = toggle.dataset.menu;
-     const menu = document.getElementById(menuId);
-     const isOpen = menu.classList.contains("open");
-
-     // close all menus
-     document.querySelectorAll(".mega-menu").forEach(m => m.classList.remove("open"));
-     toggles.forEach(t => t.setAttribute("aria-expanded", "false"));
-
-     // open clicked one
-     if (!isOpen) {
-       menu.classList.add("open");
-       toggle.setAttribute("aria-expanded", "true");
-     }
-   });
- });
-</script>
-      <script>
+document.addEventListener("DOMContentLoaded", () => {
   const toggles = document.querySelectorAll(".menu-toggle");
   const menus = document.querySelectorAll(".mega-menu");
 
   toggles.forEach(toggle => {
     toggle.addEventListener("click", (e) => {
-      e.stopPropagation(); // prevent document click from firing
+      e.stopPropagation();
 
       const menuId = toggle.dataset.menu;
       const menu = document.getElementById(menuId);
@@ -407,27 +387,29 @@ a {
     });
   });
 
-  // Prevent clicks inside menu from closing it
+  // Clicks inside menu should NOT close it
   menus.forEach(menu => {
     menu.addEventListener("click", (e) => {
       e.stopPropagation();
     });
   });
 
-  // Close when clicking anywhere else
+  // Click anywhere else → close all menus
   document.addEventListener("click", () => {
     menus.forEach(m => m.classList.remove("open"));
     toggles.forEach(t => t.setAttribute("aria-expanded", "false"));
   });
 
-        document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") {
-    menus.forEach(m => m.classList.remove("open"));
-    toggles.forEach(t => t.setAttribute("aria-expanded", "false"));
-  }
+  // Escape key closes menus
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      menus.forEach(m => m.classList.remove("open"));
+      toggles.forEach(t => t.setAttribute("aria-expanded", "false"));
+    }
+  });
 });
-
 </script>
+
 
 <!-- Search Script -->
 <script>
@@ -1206,5 +1188,6 @@ window.addEventListener("scroll", () => {
 </body>
 
 </html>
+
 
 
