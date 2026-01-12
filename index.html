@@ -295,7 +295,9 @@ a {
     <a href="crisis.html">Centre County Crisis Line</a>
     <a href="sui.html">Local Suicide and Crisis Lifeline</a>
   </div>
-
+<div class="mega-image">
+  <img src="centresupportslogo.png"/>
+</div>
   <div class="mega-column">
     <h4>Health</h4>
     <a href="centre.html">Centre Helps</a>
@@ -336,14 +338,16 @@ a {
   display: flex;
   gap: 40px;
   padding: 0 40px;
-  background: #f9f9f9;
+  background: #E4F4E8;
 
   /* collapsed state */
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.4s ease, padding 0.3s ease;
 }
-
+.mega-image img{
+  height: 500px
+}
 /* Open state */
 .mega-menu.open {
   max-height: 400px; /* large enough for content */
@@ -1189,6 +1193,7 @@ window.addEventListener("scroll", () => {
 </body>
 
 </html>
+
 
 
 
