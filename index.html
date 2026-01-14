@@ -562,6 +562,10 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="article-picture">
           <img src="editedimage.png"/>
           </div>
+      <div class="caption">
+            <p>Image caption: The Jana Marie Foundation's Hope Summit to spread mental health awareness throughout Centre County.</p>
+            <p>Photo credit: Jana Marie Foundation</p>
+            </div>
           <p>
             Regarding community support, Kelly Carpenter from Childspace has been working to improve the establishment for 2026. Childspace gives every kid a  “...child-centered environment to be in…a lot of families don’t have the kinds of equipment and materials that we have here in a space where kids can be with peers and learn from peers more than they can when they’re at home.” 
           </p>
@@ -601,6 +605,21 @@ document.addEventListener("DOMContentLoaded", () => {
   </div>
 </section>
 <style>
+  .caption {
+  width: 600px;          /* match image width */
+  margin: 0 auto;
+  text-align: center;/* center under image */
+}
+
+.caption p {
+  font-size: 0.8rem;
+  line-height: 1.4;
+  margin: 0;             /* removes spacing between lines */
+}
+
+.caption p + p {
+   /* tiny spacing between caption & credit */
+}
 .article-picture img{
   display: block;
   margin-left: auto;
@@ -924,18 +943,63 @@ document.addEventListener("DOMContentLoaded", () => {
   const rightBtn = document.querySelector(".carousel-btn.right");
 
   let offset = 0;
-  const step = 200; // Adjust scroll step
+  const step = 200;
+  let autoScrollInterval = null;
 
+  function updateTransform() {
+    track.style.transform = `translateX(${offset}px)`;
+  }
+
+  function startAutoScroll() {
+    stopAutoScroll();
+
+    autoScrollInterval = setInterval(() => {
+      const maxOffset = track.scrollWidth - container.offsetWidth;
+
+      if (Math.abs(offset) >= maxOffset) {
+        offset = 0; // reset to start
+      } else {
+        offset -= step;
+      }
+
+      updateTransform();
+    }, 1500); // speed (ms)
+  }
+
+  function stopAutoScroll() {
+    if (autoScrollInterval) {
+      clearInterval(autoScrollInterval);
+      autoScrollInterval = null;
+    }
+  }
+
+  // Desktop controls
   rightBtn.addEventListener("click", () => {
     const maxOffset = track.scrollWidth - container.offsetWidth;
     offset = Math.max(offset - step, -maxOffset);
-    track.style.transform = `translateX(${offset}px)`;
+    updateTransform();
   });
 
   leftBtn.addEventListener("click", () => {
     offset = Math.min(offset + step, 0);
-    track.style.transform = `translateX(${offset}px)`;
+    updateTransform();
   });
+
+  // Switch behavior based on screen size
+  function handleResponsive() {
+    if (window.matchMedia("(max-width: 768px)").matches) {
+      leftBtn.style.display = "none";
+      rightBtn.style.display = "none";
+      startAutoScroll();
+    } else {
+      leftBtn.style.display = "block";
+      rightBtn.style.display = "block";
+      stopAutoScroll();
+    }
+  }
+
+  handleResponsive();
+  window.addEventListener("resize", handleResponsive);
 });
 </script>
 
@@ -1192,6 +1256,7 @@ window.addEventListener("scroll", () => {
 </body>
 
 </html>
+
 
 
 
