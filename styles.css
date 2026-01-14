@@ -1,3 +1,6 @@
+.mega-image img{
+  height: 200px
+}
 body {
     font-family: 'Onest', sans-serif;
     background-color: #EBF7EE; 
@@ -410,6 +413,7 @@ footer {
     margin-top: 40px;
     box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
 }
+
 
 
 
