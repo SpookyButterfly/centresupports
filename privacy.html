@@ -228,7 +228,97 @@ a {
   </style>
 
 <body>
+<style>
+  .rotate-warning {
+    position: fixed;
+    inset: 0;
+    background: #ffffff;
+    color: #333;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 99999;
+    font-size: 1.5rem;
+    font-family: 'Onest', sans-serif;
+    padding: 20px;
+  }
+  @media screen and (max-width: 900px) and (orientation: portrait) {
+    .rotate-warning{
+      display: flex;
+    }
+    body > *.not(.rotate-warning){
+      display: none;
+    }
+  }
+  .rotate-warning p{
+    animation: pulse 1.5s infinite;
+  }
+  @keyframes pulse{
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+  .rotate-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
 
+/* Logo + spinner wrapper */
+.logo-spinner {
+  position: relative;
+  width: 140px;
+  height: 140px;
+}
+
+/* Logo */
+.logo-spinner img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Spinner ring */
+.spinner-ring {
+  width: 140px;
+  height: 140px;
+  border: 6px solid #dfe6e1;
+  border-top-color: #577263;
+  border-radius: 50%;
+  animation: spin 1.2s linear infinite;
+}
+
+/* Spinner animation */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Text styling */
+.rotate-warning p {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+}
+</style>
+<body>
+<div class="rotate-warning">
+  <div class="rotate-content">
+    <div class="logo-spinner">
+      <img src="centresupportslogo.png">
+      <div class="spinner-ring"></div>
+    </div>
+  </div>
+  <p>Please rotate your screen!</p>
+</div>
 <!-- Loading Screen -->
 <div id="loading-screen">
   <div class="spinner"></div>
@@ -717,6 +807,7 @@ setTimeout(() => {
           
 
       </header>
+
 
 
 
