@@ -414,6 +414,13 @@ footer {
     box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
 }
 
+@media screen and (max-width: 900px) {
+  header {
+    max-height: 240px;
+    overflow-y: auto;
+  }
+}
+
 
 
 
