@@ -384,6 +384,28 @@ a {
 </script>
 <!-- Search Script -->
 <script>
+ const toggles = document.querySelectorAll(".menu-toggle");
+
+ toggles.forEach(toggle => {
+   toggle.addEventListener("click", () => {
+     const menuId = toggle.dataset.menu;
+     const menu = document.getElementById(menuId);
+     const isOpen = menu.classList.contains("open");
+
+     // close all menus
+     document.querySelectorAll(".mega-menu").forEach(m => m.classList.remove("open"));
+     toggles.forEach(t => t.setAttribute("aria-expanded", "false"));
+
+     // open clicked one
+     if (!isOpen) {
+       menu.classList.add("open");
+       toggle.setAttribute("aria-expanded", "true");
+     }
+   });
+ });
+</script>
+<!-- Search Script -->
+<script>
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("searchForm");
   const input = document.getElementById("searchInput");
@@ -396,7 +418,7 @@ document.addEventListener("DOMContentLoaded", () => {
       { title: "Substance Abuse Services", keywords: ["drugs","drug","substance","help","narcotics","remission","recovery","joseph","applegate","crossroads","INC", "pinnacle"], url: "substance.html" },
       { title: "Transportation Services", keywords: ["transport","transportation","bus","buses","transit","ride","travel","commute","cata","greyhound","megabus","active","MPO"], url: "transportation.html" },
       { title: "Suicide Prevention Hotline", keywords: ["suicide","intervention","prevention","helpline","support"], url: "prevent.html" },
-      { title: "Clothing Services", keywords: ["clothing","clothes","attire","shirt","pants","shoes","Vincent","Mommy","goodwill","salvation army", "centre peace"], url: "clothing.html" },
+      { title: "Clothing Services", keywords: ["clothing","clothes","attire","shirt","pants","shoes","Vincent","Mommy","goodwill","salvation army", "centre peace", "the mommy shoppe", "St. Vincent dePaul"], url: "clothing.html" },
       { title: "Employment and Finance Services", keywords: ["employment","job","jobs","career","work","finance","money","income","CROG","CRCOG","careerlink","interfaith","liHeap"], url: "employment.html" },
       { title: "Centre County Suicide Prohibition Hotline", keywords: ["prohibition","hotline"], url: "sui.html" },
       { title: "Physical Health/Abuse", keywords: ["physical","health","healthcare","abuse","fitness","hospital","medical","medicine","wellness","doctor", "medics", "dental", "teeth", "back", "pain", "hurt", "heart","CVIM","volunteers","nittany","centre safe"], url: "abuse.html" },
@@ -760,6 +782,7 @@ window.addEventListener("scroll", () => {
 </script>
 </body>
 </html>
+
 
 
 
