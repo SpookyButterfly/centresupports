@@ -30,7 +30,12 @@
 body {
   padding-top: 240px; /* adjust to navbar height */
 }
-
+@media screen and (max-width: 900px) {
+  header {
+    max-height: 240px;
+    overflow-y: auto;
+  }
+}
 header {
   position: fixed;
   top: 0;
@@ -1346,6 +1351,7 @@ window.addEventListener("scroll", () => {
 </body>
 
 </html>
+
 
 
 
