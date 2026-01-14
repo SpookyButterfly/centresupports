@@ -45,7 +45,12 @@ body {
   font-family: 'Onest', sans-serif;
   text-decoration: none;
 }
-
+@media screen and (max-width: 900px) {
+  header {
+    max-height: 240px;
+    overflow-y: auto;
+  }
+}
 /* Mega Menu container */
 .mega-menu {
   position: absolute;
@@ -420,6 +425,7 @@ footer {
     overflow-y: auto;
   }
 }
+
 
 
 
