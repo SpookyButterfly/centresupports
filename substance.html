@@ -384,31 +384,53 @@ a {
 </script>
 <!-- Search Script -->
 <script>
+ const toggles = document.querySelectorAll(".menu-toggle");
+
+ toggles.forEach(toggle => {
+   toggle.addEventListener("click", () => {
+     const menuId = toggle.dataset.menu;
+     const menu = document.getElementById(menuId);
+     const isOpen = menu.classList.contains("open");
+
+     // close all menus
+     document.querySelectorAll(".mega-menu").forEach(m => m.classList.remove("open"));
+     toggles.forEach(t => t.setAttribute("aria-expanded", "false"));
+
+     // open clicked one
+     if (!isOpen) {
+       menu.classList.add("open");
+       toggle.setAttribute("aria-expanded", "true");
+     }
+   });
+ });
+</script>
+<!-- Search Script -->
+<script>
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("searchForm");
   const input = document.getElementById("searchInput");
   const loading = document.getElementById("loading-screen");
 
   const pages = [
-    { title: "Aging Services", keywords: ["aging","age","senior","seniors","elderly","retirement","retiree","older","nurse","old","ACAP","Eagle Valley","The Village"], url: "age.html" },
-      { title: "Youth Services", keywords: ["child","children","youth","kids","young","adolescent","juvenile","teen","childcare","baby","babies","daycare","grand"], url: "kids.html" },
-      { title: "Food Services", keywords: ["food","meal","meals","nutrition","groceries","pantry","kitchen","hunger","hungry","stomach","restaurant"], url: "food.html" },
-      { title: "Substance Abuse Services", keywords: ["drugs","drug","substance","help","narcotics","remission","recovery","joseph"], url: "substance.html" },
-      { title: "Transportation Services", keywords: ["transport","transportation","bus","buses","transit","ride","travel","commute"], url: "transportation.html" },
+    { title: "Aging Services", keywords: ["aging","age","senior","seniors","elderly","retirement","retiree","older","nurse","old","ACAP","Eagle Valley","The Village","RSVP","retired"], url: "age.html" },
+      { title: "Youth Services", keywords: ["child","children","youth","kids","young","adolescent","juvenile","teen","childcare","baby","babies","daycare","grand","childspace", "ymca", "bureau", "united way", "key"], url: "kids.html" },
+      { title: "Food Services", keywords: ["food","meal","meals","nutrition","groceries","pantry","kitchen","hunger","hungry","stomach","restaurant","food bank","faith","action","CPCA","commonFood","lion","pantry"], url: "food.html" },
+      { title: "Substance Abuse Services", keywords: ["drugs","drug","substance","help","narcotics","remission","recovery","joseph","applegate","crossroads","INC", "pinnacle"], url: "substance.html" },
+      { title: "Transportation Services", keywords: ["transport","transportation","bus","buses","transit","ride","travel","commute","cata","greyhound","megabus","active","MPO"], url: "transportation.html" },
       { title: "Suicide Prevention Hotline", keywords: ["suicide","intervention","prevention","helpline","support"], url: "prevent.html" },
-      { title: "Clothing Services", keywords: ["clothing","clothes","attire","shirt","pants","shoes","Vincent","Mommy"], url: "clothing.html" },
-      { title: "Employment and Finance Services", keywords: ["employment","job","jobs","career","work","finance","money","income"], url: "employment.html" },
+      { title: "Clothing Services", keywords: ["clothing","clothes","attire","shirt","pants","shoes","Vincent","Mommy","goodwill","salvation army", "centre peace", "the mommy shoppe", "St. Vincent dePaul"], url: "clothing.html" },
+      { title: "Employment and Finance Services", keywords: ["employment","job","jobs","career","work","finance","money","income","CROG","CRCOG","careerlink","interfaith","liHeap"], url: "employment.html" },
       { title: "Centre County Suicide Prohibition Hotline", keywords: ["prohibition","hotline"], url: "sui.html" },
-      { title: "Physical Health/Abuse", keywords: ["physical","health","healthcare","abuse","fitness","hospital","medical","medicine","wellness","doctor", "medics", "dental", "teeth", "back", "pain", "hurt", "heart"], url: "abuse.html" },
+      { title: "Physical Health/Abuse", keywords: ["physical","health","healthcare","abuse","fitness","hospital","medical","medicine","wellness","doctor", "medics", "dental", "teeth", "back", "pain", "hurt", "heart","CVIM","volunteers","nittany","centre safe"], url: "abuse.html" },
       { title: "Housing Services", keywords: ["housing","house","home","apartment","rent","rental","lease","shelter"], url: "housing.html" },
       { title: "Centre County Crisis Line", keywords: ["crisis","line"], url: "crisis.html" },
-      { title: "Mental Health Services", keywords: ["mental","mind","psychological","therapy","treatment","wellness","awareness", "sad", "depression", "anxiety","help","alone"], url: "mentalhealthservices.html" },
+      { title: "Mental Health Services", keywords: ["mental","mind","psychological","therapy","treatment","wellness","awareness", "sad", "depression", "anxiety","help","alone","jana marie","community","mental illness","NAMI"], url: "mentalhealthservices.html" },
       { title: "Centre Helps", keywords: ["helps","centre","center"], url: "helps.html" }
   ];
 
   const fuse = new Fuse(pages, {
     keys: ["title", "keywords"],
-    threshold: 0.3
+    threshold: 0.5
   });
 
   form.addEventListener("submit", e => {
@@ -726,9 +748,9 @@ setTimeout(() => {
     <div class="footer-left">
       <a href="https://mail.google.com/mail/?view=cm&fs=1&to=centresupports@gmail.com" target="_blank">Contact Us</a>
       &nbsp;&nbsp;&nbsp;
-      <a href="documentation.html" target="_blank">Terms of Service</a>
+      <a href="terms.html" target="_blank">Terms of Service</a>
       &nbsp;&nbsp;&nbsp;
-      <a href="feedback.html" target="_blank">Privacy Policy</a>
+      <a href="privacy.html" target="_blank">Privacy Policy</a>
     </div>
   </div>
     
@@ -773,3 +795,4 @@ window.addEventListener("scroll", () => {
       
 
       
+
