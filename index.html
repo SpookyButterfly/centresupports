@@ -432,7 +432,7 @@ document.addEventListener("DOMContentLoaded", () => {
       { title: "Substance Abuse Services", keywords: ["drugs","drug","substance","help","narcotics","remission","recovery","joseph","applegate","crossroads","INC", "pinnacle"], url: "substance.html" },
       { title: "Transportation Services", keywords: ["transport","transportation","bus","buses","transit","ride","travel","commute","cata","greyhound","megabus","active","MPO"], url: "transportation.html" },
       { title: "Suicide Prevention Hotline", keywords: ["suicide","intervention","prevention","helpline","support"], url: "prevent.html" },
-      { title: "Clothing Services", keywords: ["clothing","clothes","attire","shirt","pants","shoes","Vincent","Mommy","goodwill","salvation army", "centre peace"], url: "clothing.html" },
+      { title: "Clothing Services", keywords: ["clothing","clothes","attire","shirt","pants","shoes","Vincent","Mommy","goodwill","salvation army", "centre peace", "the mommy shoppe", "St. Vincent dePaul"], url: "clothing.html" },
       { title: "Employment and Finance Services", keywords: ["employment","job","jobs","career","work","finance","money","income","CROG","CRCOG","careerlink","interfaith","liHeap"], url: "employment.html" },
       { title: "Centre County Suicide Prohibition Hotline", keywords: ["prohibition","hotline"], url: "sui.html" },
       { title: "Physical Health/Abuse", keywords: ["physical","health","healthcare","abuse","fitness","hospital","medical","medicine","wellness","doctor", "medics", "dental", "teeth", "back", "pain", "hurt", "heart","CVIM","volunteers","nittany","centre safe"], url: "abuse.html" },
@@ -444,7 +444,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const fuse = new Fuse(pages, {
     keys: ["title", "keywords"],
-    threshold: 0.5
+    threshold: 0.7
   });
 
   form.addEventListener("submit", e => {
@@ -1256,6 +1256,7 @@ window.addEventListener("scroll", () => {
 </body>
 
 </html>
+
 
 
 
